@@ -4,13 +4,12 @@ DSA 210 - Beyza Cesur
 
 ## Project Overview
 This project investigates the hourly patterns of my personal TikTok usage to understand how my digital behavior aligns with daily attention rhythms. By analyzing the timestamps of TikTok videos I watched over several months, I aim to determine whether my usage patterns reflect a morning chronotype, a night owl chronotype, or a mixed pattern.  
-
-This project focuses on my **personal TikTok browsing history**.  
-By analyzing the **timestamps** of every video I watched, I investigate:
+ 
+Project is analyzing the **timestamps** of every video I watched, I investigate:
 
 - What time of day I use TikTok the most
 - Whether usage differs on weekdays vs weekends
-- Whether consistent daily routines (or “scroll loops”) exist
+- Whether consistent daily routines or scroll loops exist
 - Whether my behavior aligns with **morningn type** or **night type** chronotype tendencies
 
 
@@ -47,7 +46,7 @@ Data Extraction Workflow
 Data Source: iOS Device Analytics Usage Logs (Apple Data Privacy Export)
 Observation Period: Approximately August 2024 – January 2025 ( ~6 months )
 Data Resolution: Hourly TikTok screen time usage events
-Location / Context: Personal device usage in daily life environments (home, university, commute, travel)
+Location / Context: Personal device usage in daily life environments
 
 ## Research Questions:
 
@@ -66,27 +65,27 @@ Do these usage rhythms remain stable over months, or do they shift during exam p
 ## Hypotheses
 1. Chronotype Hypothesis
 
-Null Hypothesis (H₀):
-TikTok usage is evenly distributed throughout the day, with no specific high-usage hours.
+ **Null Hypothesis (H₀):**
+ TikTok usage is evenly distributed throughout the day, with no specific high-usage hours.
 
-Alternative Hypothesis (H₁):
-TikTok usage significantly peaks during late evening and night hours, indicating a night-owl chronotype.
+ **Alternative Hypothesis (H₁):**
+ TikTok usage significantly peaks during late evening and night hours, indicating a night owl chronotype.
 
 2. Weekday vs Weekend Usage Hypothesis
 
-Null Hypothesis (H₀):
-There is no significant difference between weekday and weekend TikTok usage levels.
+ **Null Hypothesis (H₀):**
+ There is no significant difference between weekday and weekend TikTok usage levels.
+ 
+ **Alternative Hypothesis (H₁):**
+ Weekend TikTok usage patterns differ significantly from weekday patterns (e.g., earlier start, longer duration).
 
-Alternative Hypothesis (H₁):
-Weekend TikTok usage patterns differ significantly from weekday patterns (e.g., earlier start, longer duration).
+3. Habit Formation Hypothesis 
 
-3. Habit Formation Hypothesis (optional but strong)
+ **Null Hypothesis (H₀):**
+ TikTok usage does not exhibit repeated, time linked behavioral cycles.
 
-Null Hypothesis (H₀):
-TikTok usage does not exhibit repeated, time-linked behavioral cycles.
-
-Alternative Hypothesis (H₁):
-TikTok usage forms habitual “scroll loops”, consistently occurring at similar hours each day.
+ **Alternative Hypothesis (H₁):**
+ TikTok usage forms habitual “scroll loops”, consistently occurring at similar hours each day.
 
 ## Data Analysis
 
@@ -126,6 +125,6 @@ Preliminary expected results:
  Future Improvement:
  
 - Incorporate TikTok scroll depth or category models in next iteration 
-- Run formal MEQ (Morningness–Eveningness Questionnaire) to compare 
+- Run formal MEQ to compare 
 - Expand study to include **Instagram Reels** and **YouTube Shorts** 
-- Introduce controlled screen-time reduction experiments 
+- Introduce controlled screen time reduction experiments 
