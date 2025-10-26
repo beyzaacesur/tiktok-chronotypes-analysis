@@ -3,15 +3,17 @@ DSA 210 - Beyza Cesur
 
 
 ## Project Overview
-This project investigates the hourly patterns of my personal TikTok usage to understand how my digital behavior aligns with daily attention rhythms. By analyzing the timestamps of TikTok videos I watched over several months, I aim to determine whether my usage patterns reflect a morning chronotype, a night owl chronotype, or a mixed pattern.  
- 
-Project is analyzing the **timestamps** of every video I watched, I investigate:
+
+This project investigates the hourly patterns of my personal TikTok usage to understand how my digital behavior aligns with my daily attention rhythms. By analyzing my TikTok usage history over several months, I aim to determine whether my usage patterns reflect a **morning chronotype**, a **night owl chronotype**, or a **mixed pattern**.
+
+Recent research shows that chronotype is strongly linked to mental health and daily functioning. Individuals with an evening chronotype have greater difficulty adapting to daytime schedules and are more likely to experience sleep problems, anxiety, depressive symptoms, and emotional fatigue. Because modern life is structured around morning oriented routines, evening types often experience chronic tiredness and “social jetlag” which can reduce cognitive efficiency. Since late night screen use reinforces evening chronotype tendencies, analyzing my TikTok usage patterns provides insight into whether my digital habits are supporting or disrupting my overall well being.
+
+In this project, I examine:
 
 - What time of day I use TikTok the most
 - Whether usage differs on weekdays vs weekends
-- Whether consistent daily routines or scroll loops exist
-- Whether my behavior aligns with **morningn type** or **night type** chronotype tendencies
-
+- Whether consistent daily “scroll loops” exist
+- Whether my behavior aligns with morning-type or night-type chronotype tendencies
 
 
 ## Motivation
@@ -43,23 +45,23 @@ Data Extraction Workflow
 
 ## Data Collection Period
 
-Data Source: iOS Device Analytics Usage Logs (Apple Data Privacy Export)
-Observation Period: Approximately August 2024 – January 2025 ( ~6 months )
-Data Resolution: Hourly TikTok screen time usage events
-Location / Context: Personal device usage in daily life environments
+Data Source: iOS Device Analytics Usage Logs (Apple Data Privacy Export)   
+Observation Period: Approximately August 2024 – January 2025 ( ~6 months )   
+Data Resolution: Hourly TikTok screen time usage events   
+Location / Context: Personal device usage in daily life environments     
 
 ## Research Questions:
 
-Chronotype Behavior
+Chronotype Behavior: 
 Does my TikTok usage peak during late night hours, indicating a night owl chronotype?
 
-Weekday vs Weekend Usage
+Weekday vs Weekend Usage: 
 Is there a significant difference in TikTok usage patterns between weekdays and weekends?
 
-Habitual Cycle Detection
+Habitual Cycle Detection: 
 Are there recurring daily “scroll windows” where usage consistently spikes across days?
 
-Attention Rhythm Stability
+Attention Rhythm Stability: 
 Do these usage rhythms remain stable over months, or do they shift during exam periods, stress, or schedule changes?
 
 ## Hypotheses
@@ -103,14 +105,13 @@ Do these usage rhythms remain stable over months, or do they shift during exam p
 
 
 ## Findings
-*(This section will be completed after real usage data parsing )*
 
 Preliminary expected results:
-- TikTok usage is **not evenly distributed** throughout the day.
-- Usage likely peaks during late evening or night hours.
-- Weekend usage patterns may shift earlier or last longer due to flexible schedules.
-- Repeated usage windows across days may indicate habit based scrolling cycles rather than intentional use.
-
+- TikTok usage likely peaks during the late evening or night hours, suggesting a night owl chronotype pattern.
+- Usage on weekdays may increase after academic or daily obligations, indicating stress relief or decompression behavior.
+- On weekends, usage may start earlier in the day and last longer that reflects schedule flexibility.
+- The heatmap may reveal recurring daily usage windows (example: 22:00–01:00), which would indicate habit loops rather than spontaneous usage.
+- If strong evening usage patterns are confirmed, this would align with literature showing delayed melatonin rhythm, social jetlag effects, and emotional regulation patterns commonly seen in evening chronotypes.
 
 
 ## Limitations and Future Work
