@@ -2,7 +2,7 @@
 DSA 210 - Beyza Cesur
 
 
-## PROJECT OVERVIEW :
+## **PROJECT OVERVIEW**
 
 This project investigates the hourly patterns of my personal TikTok usage to understand how my digital behavior aligns with my daily attention rhythms. By analyzing my TikTok usage history over several months, I aim to determine whether my usage patterns reflect a **morning chronotype**, a **night owl chronotype**, or a **mixed pattern**.
 
@@ -16,6 +16,7 @@ In this project, I examine:
 - Whether my behavior aligns with morning-type or night-type chronotype tendencies
 
 
+
 ##  **MOTIVATION** 
 Social media usage is often subconscious and habit driven. TikTok in particular encourages passive scrolling and can significantly affect:
 - Sleep patterns
@@ -26,6 +27,7 @@ Understanding when I tend to open TikTok helps reveal:
 - Behavioral triggers (boredom, nighttime relaxation, procrastination)
 - Whether I unintentionally reinforce late night screen cycles
 - Opportunities for digital self regulation and healthier routine formation
+
 
 
 # **DATA SOURCES AND EXTRACTION WORKFLOW**
@@ -54,7 +56,6 @@ https://www.tiktok.com/setting/download-your-data
    - Hour of day  
    - Day type (Weekday vs Weekend)  
 
-This process resulted in an event-level behavioral dataset suitable for temporal and statistical analysis.
 
 
 # **DATA ANALYSIS**
@@ -65,10 +66,7 @@ This process resulted in an event-level behavioral dataset suitable for temporal
 - **Observation Period:** September 2024 – December 2024  
 - **Analysis Window:** Last three months of data  
 - **Data Type:** Timestamped TikTok interaction events  
-- **Context:** Real-life personal smartphone usage behavior  
-
-The dataset does not include explicit session duration or watch-time metrics.  
-Therefore, event frequency is used as a proxy for usage intensity.
+- **Context:** Real life personal smartphone usage behavior  
 
 
 ## **2. Data Preprocessing and Feature Engineering**
@@ -146,7 +144,6 @@ These visualizations support both exploratory insights and hypothesis driven eva
 - **H₁:** Weekend usage differs significantly from weekday usage.
 
 
-
 ## **7. Data Analysis Pipeline Summary**
 
 | Stage | Description | Tools |
@@ -157,12 +154,16 @@ These visualizations support both exploratory insights and hypothesis driven eva
 | Statistical Testing | Validation of behavioral hypotheses | scipy.stats |
 | Interpretation | Chronotype and habit analysis | Statistical reasoning |
 
+
+
 # **FINDINGS**
+
 
 ## **1. Overall Usage Distribution**
 
 Both exploratory visualizations and statistical tests indicate that TikTok usage is not evenly distributed throughout the day.  
 The One way ANOVA results show a statistically significant difference between morning, afternoon, and night usage ratios (p < 0.05), confirming that time of day has a meaningful effect on usage behavior.
+
 
 ## **2. Time of Day Preference**
 
@@ -176,10 +177,12 @@ Paired t-test results show a statistically significant difference between mornin
 
 The center of activity hour analysis further supports this conclusion, as daily activity centers are clustered around daytime hours with no consistent shift toward late night behavior.
 
+
 ## **4. Weekday vs Weekend Behaviour**
 
 The independent t test comparing weekday and weekend usage shows no statistically significant difference in overall TikTok usage intensity.  
 This suggests that usage patterns remain relatively stable throughout the week, without notable increases during weekends.
+
 
 
 # **LIMITATIONS AND FUTURE WORK**
