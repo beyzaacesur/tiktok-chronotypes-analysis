@@ -2,7 +2,7 @@
 DSA 210 - Beyza Cesur
 
 
-## Project Overview
+## PROJECT OVERVIEW :
 
 This project investigates the hourly patterns of my personal TikTok usage to understand how my digital behavior aligns with my daily attention rhythms. By analyzing my TikTok usage history over several months, I aim to determine whether my usage patterns reflect a **morning chronotype**, a **night owl chronotype**, or a **mixed pattern**.
 
@@ -16,7 +16,7 @@ In this project, I examine:
 - Whether my behavior aligns with morning-type or night-type chronotype tendencies
 
 
-## Motivation
+##  **MOTIVATION** 
 Social media usage is often subconscious and habit driven. TikTok in particular encourages passive scrolling and can significantly affect:
 - Sleep patterns
 - Mood and stress
@@ -28,104 +28,177 @@ Understanding when I tend to open TikTok helps reveal:
 - Opportunities for digital self regulation and healthier routine formation
 
 
-## Data Sources
+# **DATA SOURCES AND EXTRACTION WORKFLOW**
 
-Data Extraction Workflow
+## **1. Data Source**
 
-1-) I accessed https://privacy.apple.com and submitted a request to download my personal device analytics data.
+The dataset used in this project was obtained directly from TikTok using its official **Download Your Data** feature.  
+This approach complies with ethical data science practices, as it relies solely on personal data voluntarily requested and used strictly for academic purposes.
 
-2-) After Apple processed the request, I downloaded the data export ZIP file provided.
+**Data Request Portal:**  
+https://www.tiktok.com/setting/download-your-data  
 
-3-) From the extracted contents, I navigated to the Analytics Logs folder, which stores timestamped application usage records.
+## **2. Data Extraction Workflow**
 
-4-) I isolated entries corresponding to TikTok by filtering for its application bundle identifier
+1. TikTok’s official data request portal was accessed and a request was submitted to download personal account data in JSON format.  
+2. After processing, TikTok provided the data export as a compressed (ZIP) archive.  
+3. From the extracted contents, the following path was selected:  
+   **Ads and Data → Off TikTok Activity**  
+4. This section contains timestamped interaction logs, including events such as:
+   - App launches  
+   - Logins  
+   - In-app interaction signals  
+5. The raw JSON files were parsed using Python and converted into a structured tabular dataset.
+6. From each event, the following attributes were derived:
+   - Date  
+   - Hour of day  
+   - Day type (Weekday vs Weekend)  
 
-5-) I parsed and transformed the analytics logs into a structured dataset containing the following fields: Date, Hour of the Day, Total Minutes of TikTok Usage During That Hour, Day Type (Weekday vs Weekend)
+This process resulted in an event-level behavioral dataset suitable for temporal and statistical analysis.
 
 
-## Data Collection Period
+# **DATA ANALYSIS**
 
-Data Source: iOS Device Analytics Usage Logs (Apple Data Privacy Export)   
-Observation Period: Approximately August 2024 – January 2025 ( ~6 months )   
-Data Resolution: Hourly TikTok screen time usage events   
-Location / Context: Personal device usage in daily life environments     
+## **1. Data Collection and Scope**
 
-## Research Questions:
+- **Data Source:** TikTok Off TikTok Activity logs (Personal Data Export)  
+- **Observation Period:** September 2024 – December 2024  
+- **Analysis Window:** Last three months of data  
+- **Data Type:** Timestamped TikTok interaction events  
+- **Context:** Real-life personal smartphone usage behavior  
 
-Chronotype Behavior: 
-Does my TikTok usage peak during late night hours, indicating a night owl chronotype?
+The dataset does not include explicit session duration or watch-time metrics.  
+Therefore, event frequency is used as a proxy for usage intensity.
 
-Weekday vs Weekend Usage: 
-Is there a significant difference in TikTok usage patterns between weekdays and weekends?
 
-Habitual Cycle Detection: 
-Are there recurring daily “scroll windows” where usage consistently spikes across days?
+## **2. Data Preprocessing and Feature Engineering**
 
-Attention Rhythm Stability: 
-Do these usage rhythms remain stable over months, or do they shift during exam periods, stress, or schedule changes?
+The raw JSON data is parsed and enriched with time-based features to enable temporal analysis:
 
-## Hypotheses
-1. Chronotype Hypothesis
+- Conversion of timestamps to datetime format  
+- Extraction of hour, date, and day of week  
+- Classification of days as weekday or weekend  
+- Filtering to retain only the most recent three months  
 
- **Null Hypothesis (H₀):**
- TikTok usage is evenly distributed throughout the day, with no specific high-usage hours.
+To analyze daily usage patterns, each day is divided into three standardized time periods:
 
- **Alternative Hypothesis (H₁):**
- TikTok usage significantly peaks during late evening and night hours, indicating a night owl chronotype.
+- **Morning:** 05:00 – 12:59  
+- **Afternoon:** 13:00 – 20:59  
+- **Night:** 21:00 – 04:59  
 
-2. Weekday vs Weekend Usage Hypothesis
 
- **Null Hypothesis (H₀):**
- There is no significant difference between weekday and weekend TikTok usage levels.
- 
- **Alternative Hypothesis (H₁):**
- Weekend TikTok usage patterns differ significantly from weekday patterns (e.g., earlier start, longer duration).
+## **3. Usage Metrics and Proxy Measures**
 
-3. Habit Formation Hypothesis 
+Because exact screen time is unavailable, usage intensity is approximated using:
 
- **Null Hypothesis (H₀):**
- TikTok usage does not exhibit repeated, time linked behavioral cycles.
+- **Proxy minutes** based on event frequency  
+- **Usage ratios**, calculated as the proportion of total daily activity occurring in each time period. Using ratios allows behavioral comparisons independent of total daily usage volume.  
+Additionally, a **circular mean** is computed to estimate each day’s *center of activity hour*, ensuring accurate handling of time-of-day patterns across the 24-hour cycle.
 
- **Alternative Hypothesis (H₁):**
- TikTok usage forms habitual “scroll loops”, consistently occurring at similar hours each day.
 
-## Data Analysis
+## **4. Implemented Visualizations**
+
+The following visualizations are implemented in the analysis notebook:
+
+- **Line Plot:** Daily TikTok usage intensity (proxy minutes)  
+- **Bar Chart:** Average usage by time period  
+- **Bar Chart:** Average usage ratios by time period  
+- **Time Series Plot:** Center of activity hour over time (mean ± standard deviation)  
+
+These visualizations support both exploratory insights and hypothesis driven evaluation.
+
+
+## **5. Research Questions**
+
+- **Chronotype Behavior:**  
+  Does TikTok usage concentrate during late-night hours?
+
+- **Time-of-Day Preference:**  
+  Is usage significantly different across morning, afternoon, and night periods?
+
+- **Weekday vs Weekend Patterns:**  
+  Does usage behavior differ between weekdays and weekends?
+
+- **Habit Stability:**  
+  Are daily usage rhythms consistent over time, or do they shift?
+
+
+## **6. Hypothesis Testing**
+
+### **6.1 Time Period Comparison (One-way ANOVA)**
+
+- **H₀:** Usage ratios are equal across morning, afternoon, and night.  
+- **H₁:** At least one time period has a significantly different usage ratio.
+
+### **6.2 Morning vs Afternoon (Paired t-test)**
+
+- **H₀:** Morning and afternoon usage ratios are equal.  
+- **H₁:** A significant difference exists between morning and afternoon usage.
+
+### **6.3 Morning vs Night (Paired t-test)**
+
+- **H₀:** Morning and night usage ratios are equal.  
+- **H₁:** Morning usage differs significantly from night usage.
+
+### **6.4 Weekday vs Weekend (Independent t-test)**
+
+- **H₀:** There is no difference between weekday and weekend usage.  
+- **H₁:** Weekend usage differs significantly from weekday usage.
+
+
+
+## **7. Data Analysis Pipeline Summary**
 
 | Stage | Description | Tools |
-|------|-------------|------|
-| Data Cleaning | Parsed analytics logs and extracted timestamps | Python, pandas |
-| Feature Engineering | Computed hourly usage + weekday/weekend grouping | pandas, datetime |
-| Visualization | Created usage patterns and heatmaps | matplotlib, seaborn |
-| Behavioral Interpretation | Identified peak usage and repeated behavior cycles | Statistical reasoning |
+|------|-----------|-------|
+| Data Cleaning | Parsing JSON logs and extracting timestamps | Python, pandas |
+| Feature Engineering | Time-based aggregation and categorization | pandas, datetime |
+| Visualization | Temporal usage pattern analysis | matplotlib, seaborn |
+| Statistical Testing | Validation of behavioral hypotheses | scipy.stats |
+| Interpretation | Chronotype and habit analysis | Statistical reasoning |
 
-### Planned Visualizations:
-- **Line Plot**: TikTok usage by hour of day
-- **Heatmap**: Hour × Weekday vs Weekend usage intensity
-- **Distribution Plot**: Concentration of evening vs morning usage
+# **FINDINGS**
 
+## **1. Overall Usage Distribution**
 
-## Findings
+Both exploratory visualizations and statistical tests indicate that TikTok usage is not evenly distributed throughout the day.  
+The One way ANOVA results show a statistically significant difference between morning, afternoon, and night usage ratios (p < 0.05), confirming that time of day has a meaningful effect on usage behavior.
 
-Preliminary expected results:
-- TikTok usage likely peaks during the late evening or night hours, suggesting a night owl chronotype pattern.
-- Usage on weekdays may increase after academic or daily obligations, indicating stress relief or decompression behavior.
-- On weekends, usage may start earlier in the day and last longer that reflects schedule flexibility.
-- The heatmap may reveal recurring daily usage windows (example: 22:00–01:00), which would indicate habit loops rather than spontaneous usage.
-- If strong evening usage patterns are confirmed, this would align with literature showing delayed melatonin rhythm, social jetlag effects, and emotional regulation patterns commonly seen in evening chronotypes.
+## **2. Time of Day Preference**
+
+Bar charts based on proxy minutes and usage ratios reveal that afternoon usage accounts for the largest share of daily activity, followed closely by morning usage.  
+In contrast, night usage consistently represents a much smaller proportion of overall engagement.
 
 
-## Limitations and Future Work
+## **3. Chronotype Insights**
 
- Limitation:
+Paired t-test results show a statistically significant difference between morning and night usage ratios, while the difference between morning and afternoon usage is not statistically significant. These findings indicate that night usage is systematically lower than daytime usage, pointing to a day oriented rather than night oriented chronotype.
 
-- Data reflects foreground app time, not content type 
-- Chronotype inference is behavioral, not clinically validated 
-- Only TikTok analyzed 
-- No causal interpretation 
+The center of activity hour analysis further supports this conclusion, as daily activity centers are clustered around daytime hours with no consistent shift toward late night behavior.
 
- Future Improvement:
- 
-- Incorporate TikTok scroll depth or category models in next iteration 
-- Run formal MEQ to compare 
-- Expand study to include **Instagram Reels** and **YouTube Shorts** 
-- Introduce controlled screen time reduction experiments 
+## **4. Weekday vs Weekend Behaviour**
+
+The independent t test comparing weekday and weekend usage shows no statistically significant difference in overall TikTok usage intensity.  
+This suggests that usage patterns remain relatively stable throughout the week, without notable increases during weekends.
+
+
+# **LIMITATIONS AND FUTURE WORK**
+
+## **LIMITATIONS**
+
+- The dataset does not include actual screen time or watch duration. Usage intensity is estimated using event frequency and proxy minutes.
+- Only TikTok *Off TikTok Activity* data is available, meaning passive in app browsing may not be fully captured.
+- The analysis is based on a single user, so findings are not generalizable.
+- Contextual factors such as sleep, stress levels, or academic workload are not included.
+
+
+## **FUTURE WORK**
+
+- Integrate true screen time data (e.g., iOS Screen Time) to improve usage estimation.
+- Extend the dataset to multiple users for comparative analysis.
+- Apply machine learning techniques such as clustering or time-series forecasting.
+- Incorporate contextual variables (exam periods, sleep patterns) to better explain usage behavior.
+- Use sequential models to detect habitual scrolling cycles.
+
+
+
