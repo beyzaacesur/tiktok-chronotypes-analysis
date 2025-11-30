@@ -203,5 +203,13 @@ This suggests that usage patterns remain relatively stable throughout the week, 
 - Incorporate contextual variables (exam periods, sleep patterns) to better explain usage behavior.
 - Use sequential models to detect habitual scrolling cycles.
 
+# HOW TO RUN THE ANALYSIS
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/beyzaacesur/tiktok-chronotypes-analysis.git
+cd tiktok-chronotypes-analysis
+
 
 
