@@ -183,6 +183,47 @@ The center of activity hour analysis further supports this conclusion, as daily 
 The independent t test comparing weekday and weekend usage shows no statistically significant difference in overall TikTok usage intensity.  
 This suggests that usage patterns remain relatively stable throughout the week, without notable increases during weekends.
 
+## **MACHINE LEARNING ANALYSIS: K-MEANS CLUSTERING**
+
+To further explore usage patterns without predefined labels, an unsupervised machine learning approach—**K-Means clustering**—was applied to the daily usage features.
+
+### **Feature Set**
+The following day-level features were used as input to the clustering model:
+- `morning_ratio`: proportion of daily usage in morning hours  
+- `afternoon_ratio`: proportion of daily usage in afternoon hours  
+- `night_ratio`: proportion of daily usage in night hours  
+- `center_of_activity_hour`: circular mean of activity timing
+
+These features represent the relative distribution of usage and capture temporal preferences independently of total daily usage.
+
+### **Model Selection**
+The optimal number of clusters (`k`) was determined using:
+- **Elbow method** (inertia): to evaluate cluster compactness  
+- **Silhouette score**: to measure separation quality  
+
+Based on these metrics and interpretability, a suitable `k` (e.g., 3) was selected.
+
+### **Cluster Profiles**
+After fitting the K-Means model, each day was assigned a cluster label.  
+Cluster summaries reveal distinct behavioral patterns:
+
+- **Cluster 0 – Morning-heavy usage:** Days with relatively higher usage in the morning period and earlier activity center hours.  
+- **Cluster 1 – Afternoon-heavy usage:** Days with dominant afternoon usage and mid-day activity centers.  
+- **Cluster 2 – Night-heavy usage:** Days characterized by a comparatively larger night usage ratio and later activity centers.
+
+These patterns show that daily usage behavior does not form a single homogeneous group but rather can be grouped into recurring temporal profiles.
+
+### **Visualization and Interpretation**
+Cluster profiles were visualized using:
+- **Bar charts of usage ratio means** for each cluster  
+- **Scatter plots of center of activity vs. proxy usage intensity** colored by cluster  
+
+Such visualizations support the interpretation that distinct daily usage habits exist, reflecting differences in chronotype and engagement rhythms. The analysis adds another dimension to the descriptive and statistical results, demonstrating that days naturally group into characteristic usage patterns without supervision.
+
+### **Output Files**
+The clustering results, including cluster labels and profile assignments for each date, were saved as:
+
+
 
 
 # **LIMITATIONS AND FUTURE WORK**
