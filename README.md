@@ -220,8 +220,19 @@ Cluster profiles were visualized using:
 
 Such visualizations support the interpretation that distinct daily usage habits exist, reflecting differences in chronotype and engagement rhythms. The analysis adds another dimension to the descriptive and statistical results, demonstrating that days naturally group into characteristic usage patterns without supervision.
 
-### **Output Files**
+## OUTPUT FILES
+
 The clustering results, including cluster labels and profile assignments for each date, were saved as:
+
+- **daily_clusters_kmeans.csv**  
+  Contains day level records with:
+  - Date  
+  - Morning, afternoon, and night usage ratios  
+  - Center of activity hour  
+  - Assigned cluster label  
+  - Interpreted cluster name (e.g., Morning-heavy, Afternoon-heavy, Night-heavy)
+
+This file enables further inspection of daily behavioral patterns and can be used for additional analysis or visualization outside the notebook.
 
 
 
