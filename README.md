@@ -220,21 +220,27 @@ Cluster profiles were visualized using:
 
 Such visualizations support the interpretation that distinct daily usage habits exist, reflecting differences in chronotype and engagement rhythms. The analysis adds another dimension to the descriptive and statistical results, demonstrating that days naturally group into characteristic usage patterns without supervision.
 
-## OUTPUT FILES
+# **OUTPUT FILES**
 
-The clustering results, including cluster labels and profile assignments for each date, were saved as:
+## **daily_clusters_kmeans.csv**
 
-- **daily_clusters_kmeans.csv**  
-  Contains day level records with:
-  - Date  
-  - Morning, afternoon, and night usage ratios  
-  - Center of activity hour  
-  - Assigned cluster label  
-  - Interpreted cluster name (e.g., Morning-heavy, Afternoon-heavy, Night-heavy)
+This file contains the results of the K-Means clustering applied to daily TikTok usage patterns.  
+Each row represents one day and includes:
 
-This file enables further inspection of daily behavioral patterns and can be used for additional analysis or visualization outside the notebook.
+- **date**
+- **morning_ratio, afternoon_ratio, night_ratio**
+- **center_of_activity_hour**
+- **total_minutes_proxy**
+- **cluster** (numeric label)
+- **cluster_name** (interpreted usage pattern)
 
+### **Cluster Interpretation (k = 3)**
 
+- **Morning-heavy:** days dominated by morning usage with early activity centers  
+- **Afternoon-heavy:** days with highest usage during afternoon hours  
+- **Night-heavy:** days with relatively higher night usage and later activity centers  
+
+This output summarizes daily behavioral patterns and supports identifying recurring chronotype related usage profiles.
 
 
 # **LIMITATIONS AND FUTURE WORK**
