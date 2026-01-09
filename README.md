@@ -185,7 +185,7 @@ This suggests that usage patterns remain relatively stable throughout the week, 
 
 ## **MACHINE LEARNING ANALYSIS: K-MEANS CLUSTERING**
 
-To further explore usage patterns without predefined labels, an unsupervised machine learning approach—**K-Means clustering**—was applied to the daily usage features.
+To further explore usage patterns without predefined labels, an unsupervised machine learning approach—**K-Means clustering**—was applied to the daily usage features. The goal of the unsupervised learning step is not prediction, but to identify recurring daily usage patterns without predefined labels.
 
 ### **Feature Set**
 The following day-level features were used as input to the clustering model:
@@ -244,13 +244,17 @@ The clustering results, including cluster labels and profile assignments for eac
 - Incorporate contextual variables (exam periods, sleep patterns) to better explain usage behavior.
 - Use sequential models to detect habitual scrolling cycles.
 
-# HOW TO RUN THE ANALYSIS
+## **ETHICAL CONSIDERATIONS**
+This project uses only personal data voluntarily requested from TikTok and analyzed solely for academic purposes. No third party data, scraping, or tracking tools were used, and no personally identifiable information is shared.
 
-## 1. Clone the repository
 
-```bash
+## HOW TO RUN THE ANALYSIS
+
+1. Clone the repository
 git clone https://github.com/beyzaacesur/tiktok-chronotypes-analysis.git
-cd tiktok-chronotypes-analysis
 
+2. Install dependencies
+pip install -r requirements.txt
 
-
+3. Run the analysis
+Open and run EDA_HypothesisTesting_and_ML.ipynb
